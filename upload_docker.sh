@@ -5,12 +5,12 @@
 
 # Step 1:
 # Create dockerpath
-dockerpath=wardahsana/caps
+dockerpath=wardahsana/capproj
 
 # Step 2:  
 # Authenticate & tag
 docker login --username wardahsana
-docker tag caps $dockerpath
+docker tag capproj $dockerpath
 echo "Docker ID and Image: $dockerpath"
 
 # Step 3:
