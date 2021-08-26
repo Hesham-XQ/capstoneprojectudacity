@@ -29,13 +29,7 @@ spec:
     spec:
       containers:
       - name: capston-pod-reactapp
-        image: wardahsana/caps
+        image: wardahsana/capproj
         ports:
         - containerPort: 3000
-        resources:
-      limits:
-        memory: 512Mi
-        cpu: "1"
-      requests:
-        memory: 256Mi
-        cpu: "0.2"
+        
