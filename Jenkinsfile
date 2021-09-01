@@ -20,17 +20,22 @@ pipeline {
               steps {
                   echo 'Building docker container'
                   script {
-                    dockerimage = docker.build
+                    dockerimage = docker.build("wardahsana/capproj", "-f Dockerfile .")
 
                   }
 
         stage('Push image') {
               steps {
                   echo "Pushing image to DockerHub"
+                  script { 
+                    docker.withRegistry('', 'dockerhub') {
+                      dockerimage.push()
+
+                  }
         }
         stage('Create kube config file') {
               steps {
-                withAWS(region: 'us-east-2', credentials: 'some_access_id') {
+                withAWS(region: 'us-east-2', credentials: 'access_id') {
                   sh '''
                             aws eks --region us-east-2 update-kubeconfig --name capstoneproj
                     '''
