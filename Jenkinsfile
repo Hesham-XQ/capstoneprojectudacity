@@ -40,9 +40,12 @@ pipeline {
                             aws eks --region us-east-2 update-kubeconfig --name capstoneproj
                     '''
 
-stage('Deploy blue container') {
-  when { branch 'blue'}
-}
+        stage('Deploy container to AWS EKS cluster') {
+          steps {
+              echo "Deploying to EKS cluster in AWS"
+          when { branch 'blue'}
+        }
+        }
 stage('Redirect service to blue container') {
   when { branch 'blue'}
 }
