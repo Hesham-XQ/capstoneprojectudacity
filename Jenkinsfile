@@ -9,6 +9,7 @@ pipeline {
             }      
                 
         } 
+        
         stage('Lint Application') {
               steps {
                   echo "Linting app"
