@@ -32,4 +32,7 @@ spec:
         image: wardahsana/capproj
         ports:
         - containerPort: 3000
+strategy:
+  type: Rollingupdate
+  rollingup      maxSurge: 50%
         
