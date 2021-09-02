@@ -35,7 +35,7 @@ pipeline {
         }
         stage('Create kube config file') {
               steps {
-                withAWS(region: 'us-east-2', credentials: 'access_id') {
+                withAWS(region: 'us-east-2', credentials: 'aws-access-id') {
                   sh '''
                             aws eks --region us-east-2 update-kubeconfig --name capstoneproj
                     '''
@@ -43,15 +43,4 @@ pipeline {
         stage('Deploy container to AWS EKS cluster') {
           steps {
               echo "Deploying to EKS cluster in AWS"
-          when { branch 'blue'}
-        }
-        }
-stage('Redirect service to blue container') {
-  when { branch 'blue'}
-}
-stage('Deploy green container') {
-  when { branch 'green'}
-}
-stage('Redirect service to green container') {
-  when { branch 'green'}
-}
+          
