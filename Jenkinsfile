@@ -51,4 +51,3 @@ pipeline {
           sh 'kubectl apply -f deployment.yml'
           sh 'kubectl get pods'
           sh 'kubectl get services'
-'''testting'''
