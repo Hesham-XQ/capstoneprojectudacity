@@ -32,6 +32,10 @@ spec:
         image: wardahsana/capproj
         ports:
         - containerPort: 3000
+        resources:
+            limits:
+              memory: "64Mi"
+              cpu: "500m"
 strategy:
   type: Rollingupdate
   rollingup      maxSurge: 50%
