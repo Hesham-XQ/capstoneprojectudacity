@@ -34,19 +34,19 @@ pipeline {
 
                   }
         }
-'''Configures kubectl so that jenkins can connect to an Amazon EKS cluster.'''
+'''This is to make kubeconfig available to jenkins user, previously available to ubuntu user only'''
         stage('Create kube config file') {
               steps {
                 withAWS(region: 'us-east-2', credentials: 'aws-access-id') {
                   sh '''
-                            aws eks --region us-east-2 update-kubeconfig --name capstoneproj
+                            aws eks --region us-east-2 update-kubeconfig --name caps
                     '''
 
         stage('Deploy container to AWS EKS cluster') {
           steps {
             withAWS(region: 'us-east-2', credentials: 'aws_access_id') {
           echo 'Deploying to EKS cluster'
-          sh 'aws eks --region us-east-2 update-kubeconfig --name capstoneproj'
+          sh 'aws eks --region us-east-2 update-kubeconfig --name caps'
           sh 'kubectl config use-context arn:aws:eks:us-east-2:610575826472:cluster/caps'
           sh 'kubectl apply -f deployment.yml'
           sh 'kubectl get pods'
