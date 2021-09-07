@@ -17,11 +17,11 @@ pipeline {
             }
         }    
 
-        stage('Docker build image') {
+        stage('Docker build image') {  
               steps {
                   echo 'Building docker container'
                   script {
-                    dockerimage = docker.build("wardahsana/capproj", "-f Dockerfile .")
+                    dockerimage = docker.build("wardahsana/capproject", "-f Dockerfile .")
 
                   }
 
@@ -34,6 +34,7 @@ pipeline {
 
                   }
         }
+'''Configures kubectl so that jenkins can connect to an Amazon EKS cluster.'''
         stage('Create kube config file') {
               steps {
                 withAWS(region: 'us-east-2', credentials: 'aws-access-id') {
@@ -43,5 +44,10 @@ pipeline {
 
         stage('Deploy container to AWS EKS cluster') {
           steps {
-              echo "Deploying to EKS cluster in AWS"
-          
+            withAWS(region: 'us-east-2', credentials: 'aws_access_id') {
+          echo 'Deploying to EKS cluster'
+          sh 'aws eks --region us-east-2 update-kubeconfig --name capstoneproj'
+          sh 'kubectl config use-context arn:aws:eks:us-east-2:610575826472:cluster/caps'
+          sh 'kubectl apply -f deployment.yml'
+          sh 'kubectl get pods'
+          sh 'kubectl get services'
