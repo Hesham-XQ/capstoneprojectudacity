@@ -24,6 +24,8 @@ pipeline {
                     dockerimage = docker.build("wardahsana/capproject", "-f Dockerfile .")
 
                   }
+              }
+        }
 
         stage('Push image') {
               steps {
@@ -33,6 +35,8 @@ pipeline {
                       dockerimage.push()
 
                   }
+                }
+             }
         }
 '''This is to make kubeconfig available to jenkins user, previously available to ubuntu user only'''
         stage('Create kube config file') {
@@ -41,6 +45,9 @@ pipeline {
                   sh '''
                             aws eks --region us-east-2 update-kubeconfig --name caps
                     '''
+                }
+              }
+        }
 
         stage('Deploy container to AWS EKS cluster') {
           steps {
@@ -54,3 +61,6 @@ pipeline {
             }
           }
        }
+
+    }
+}
