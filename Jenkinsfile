@@ -63,8 +63,7 @@ pipeline {
           sh 'aws eks --region us-east-2 update-kubeconfig --name caps'
           sh 'kubectl config use-context arn:aws:eks:us-east-2:610575826472:cluster/caps'
           sh 'kubectl apply -f deployment.yml'
-          sh 'kubectl get pods'
-          sh 'kubectl get services'
+          
             }
           }
        }
