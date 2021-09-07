@@ -38,7 +38,7 @@ pipeline {
                 }
              }
         }
-'''This is to make kubeconfig available to jenkins user, previously available to ubuntu user only'''
+
         stage('Create kube config file') {
               steps {
                 withAWS(region: 'us-east-2', credentials: 'aws-access-id') {
