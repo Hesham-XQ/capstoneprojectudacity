@@ -28,7 +28,7 @@ pipeline {
         stage('Docker build image') {  
               steps {
                   echo 'Building docker container'
-                  sh 'docker build -t wardahsana/capproj .
+                  sh 'docker build -t wardahsana/capproj .'
                   }
               }
         
