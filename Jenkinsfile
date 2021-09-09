@@ -39,18 +39,7 @@ pipeline {
                   sh 'docker push wardahsana/capproj'
                   }
                 }
-             
-        
-
-        stage('Create kube config file') {
-              steps {
-                withAWS(region: 'us-east-2', credentials: 'aws-access-id') {
-                  sh '''
-                            aws eks --region us-east-2 update-kubeconfig --name caps
-                    '''
-                }
-              }
-        
+                    
 
         stage('Deploy container to AWS EKS cluster') {
           steps {
