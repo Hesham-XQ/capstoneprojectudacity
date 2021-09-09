@@ -1,6 +1,14 @@
 pipeline {
     agent any
     stages {
+
+        stage('Install any dependencies') { 
+            steps {
+                echo "Installing dependencies"
+                sh 'npm install' 
+            }
+        }
+        
                      
         stage('Build Application') {
               steps {
@@ -20,7 +28,7 @@ pipeline {
         stage('Docker build image') {  
               steps {
                   echo 'Building docker container'
-                  sh 'docker build -t wardahsana/capprojj .
+                  sh 'docker build -t wardahsana/capproj .
                   }
               }
         
@@ -28,7 +36,7 @@ pipeline {
         stage('Push image') {
               steps {
                   echo "Pushing image to DockerHub"
-                  sh 'docker push wardahsana/capprojj'
+                  sh 'docker push wardahsana/capproj'
                   }
                 }
              
@@ -46,11 +54,8 @@ pipeline {
 
         stage('Deploy container to AWS EKS cluster') {
           steps {
-            withAWS(region: 'us-east-2', credentials: 'aws_access_id') {
-          echo 'Deploying to EKS cluster'
-          sh 'aws eks --region us-east-2 update-kubeconfig --name caps'
-          sh 'kubectl config use-context arn:aws:eks:us-east-2:610575826472:cluster/caps'
-          sh 'kubectl apply -f deployment.yml'
+              sh 'kubectl set image deployment/capston-deployment capston-pod-reactapp=wardahsana/capproj:latest'
+
           
             }
           }
