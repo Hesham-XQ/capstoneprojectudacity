@@ -1,14 +1,7 @@
 pipeline {
     agent any
     stages {
-
-        stage('Install dependencies') {
-              steps {
-                  echo "Installing dependencies"
-                  sh 'npm i'
-              }
-        }
-                
+                     
         stage('Build Application') {
               steps {
                   echo "Building app"
@@ -27,24 +20,19 @@ pipeline {
         stage('Docker build image') {  
               steps {
                   echo 'Building docker container'
-                  script {
-                    dockerimage = docker.build("wardahsana/capproject", "-f Dockerfile .")
-
+                  sh 'docker build -t wardahsana/capprojj .
                   }
               }
-        }
+        
 
         stage('Push image') {
               steps {
                   echo "Pushing image to DockerHub"
-                  script { 
-                    docker.withRegistry('', 'dockerhub') {
-                      dockerimage.push()
-
+                  sh 'docker push wardahsana/capprojj'
                   }
                 }
-             }
-        }
+             
+        
 
         stage('Create kube config file') {
               steps {
@@ -54,7 +42,7 @@ pipeline {
                     '''
                 }
               }
-        }
+        
 
         stage('Deploy container to AWS EKS cluster') {
           steps {

@@ -30,13 +30,16 @@ spec:
       containers:
       - name: capston-pod-reactapp
         image: wardahsana/capproj
+        imagePullPolicy: "Always"
         ports:
         - containerPort: 3000
-        resources:
-            limits:
-              memory: "64Mi"
-              cpu: "500m"
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 3000
+
 strategy:
   type: Rollingupdate
-  rollingup      maxSurge: 50%
-        
+  rollingUpdate:
+    maxSurge: 1
+    maxUnavailable: 1        
