@@ -1,14 +1,6 @@
 pipeline {
     agent any
-    stages {
-
-        stage('Install any dependencies') { 
-            steps {
-                echo "Installing dependencies"
-                sh 'npm install' 
-            }
-        }
-        
+    stages {       
                      
         stage('Build Application') {
               steps {
