@@ -2,12 +2,6 @@ pipeline {
     agent any
     stages {
 
-        stage('Install any dependencies') { 
-            steps {
-                echo "Installing dependencies"
-                sh 'npm i' 
-            }
-        }
         
                      
         stage('Build Application') {
@@ -50,7 +44,7 @@ pipeline {
 
         stage('Deploy container to AWS EKS cluster') {
           steps {
-              withAWS(credentials: "aws-access-id", region: "eu-east-2") 
+              withAWS(region: 'us-east-2', credentials: 'aws-access-id') 
               sh 'kubectl set image deployment/capston-deployment capston-pod-reactapp=wardahsana/capproj:latest'
 
           
