@@ -38,3 +38,8 @@ spec:
             path: /
             port: 3000
    
+strategy:
+  type: Rollingupdate
+  rollingUpdate:
+    maxSurge: 1
+    maxUnavailable: 1     
