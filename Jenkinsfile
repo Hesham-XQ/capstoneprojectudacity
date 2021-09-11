@@ -15,7 +15,7 @@ pipeline {
         stage('Lint Application') {
               steps {
                   echo "Linting app"
-                  sh 'npm run lint'
+                  sh 'hadolint Dockerfile'
             }
         }    
 
