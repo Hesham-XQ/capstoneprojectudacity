@@ -6,7 +6,7 @@ pipeline {
               steps {
                   echo "Installing dependencies"
                   sh 'sudo npm i -g npm@latest'
-                  sh 'npm install --save react react-dom react-scripts'
+                  sh 'sudo npm install --save react react-dom react-scripts'
 
             }      
                 
