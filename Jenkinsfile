@@ -12,10 +12,11 @@ pipeline {
         stage('Build Application') {
               steps {
                   echo "Building app"
+                  sh 'npm start'
                   sh 'npm run build'
             }      
                 
-        } 
+        }
         
         stage('Lint Application') {
               steps {
