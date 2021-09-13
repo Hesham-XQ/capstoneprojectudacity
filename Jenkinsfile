@@ -6,13 +6,14 @@ pipeline {
               steps {
                   echo "Installing dependencies"
                   sh 'sudo npm i -g npm@latest'
+                  sh 'npm install --save react react-dom react-scripts'
+
             }      
                 
         }              
         stage('Build Application') {
               steps {
                   echo "Building app"
-                  sh 'npm start'
                   sh 'npm run build'
             }      
                 
