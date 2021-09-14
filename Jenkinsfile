@@ -2,7 +2,6 @@ pipeline {
     agent any
     stages {        
         
-        stages {
         stage('Git') {
             steps {
                 git credentialsId: 'wardahsana', url: 'https://github.com/wardahsana/CapstoneProjectUdacity.git'
