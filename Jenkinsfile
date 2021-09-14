@@ -30,7 +30,7 @@ pipeline {
               steps {
                   echo 'Building docker container'
                   script {
-                  dockerImage = docker.build("wardahsana/capproj", "-f Dockerfile .")
+                    dockerImage = docker.build("wardahsana/capproj", "-f Dockerfile .")
                   }
               }
         
