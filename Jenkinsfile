@@ -29,8 +29,7 @@ pipeline {
         stage('Docker build image') {  
               steps {
                   echo 'Building docker container'
-                  script {
-                    dockerImage = docker.build("wardahsana/capproj", "-f Dockerfile .")
+                  sh 'docker build -t wardahsana/capproj .'
                   }
               }
         
@@ -61,4 +60,3 @@ pipeline {
        }
 
     }
-}
