@@ -2,7 +2,7 @@ FROM node:13.12.0-alpine
 
 ## Step 1:
 # Create working directory. (add the source code of our application to the image. This creates a directory called app in our image, and adds our source code to that directory.
-WORKDIR /myapp
+WORKDIR /newapp
 
 # Step 1a: add `/app/node_modules/.bin` to $PATH
 #ENV PATH /app/node_modules/.bin:$PATH
@@ -13,6 +13,8 @@ COPY package.json ./
 COPY package-lock.json ./
 
 ## Step 3: install all the dependencies we might have installed locally, in our image
+#RUN npm i -g npm@latest
+
 RUN npm install
 
 
