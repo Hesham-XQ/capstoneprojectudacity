@@ -12,7 +12,6 @@ pipeline {
         stage('Install dependencies') {
               steps {
                   echo "Installing dependencies"
-                  sh 'sudo apt install npm'
                   sh 'npm install'
                   sh 'npm install --save react react-dom react-scripts'
 
