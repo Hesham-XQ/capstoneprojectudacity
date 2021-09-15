@@ -51,7 +51,7 @@ pipeline {
         stage('Create kube config file') {
             steps {
                 withAWS(region: 'us-east-2', credentials: 'aws-access-id') {
-                    sh 'aws eks --region us-east-2 update-kubeconfig --name caps'
+                    sh 'aws eks --region us-east-2 update-kubeconfig --name capsproj'
                     }
                 }       
             }
