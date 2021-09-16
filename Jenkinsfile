@@ -18,6 +18,7 @@ pipeline {
         stage('Install dependencies') {
               steps {
                   echo "Installing dependencies"
+                  sh 'sudo apt-get install npm'
                   sh 'npm install -g npm@latest'
                   
 
