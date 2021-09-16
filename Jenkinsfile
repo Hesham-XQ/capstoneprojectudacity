@@ -5,16 +5,17 @@ pipeline {
 
     stages {  
         
-        stage('npm config') {
+        stage('Git') {
             steps {
-                sh 'npm config ls'
+                git credentialsId: 'wardahsana', url: 'https://github.com/wardahsana/CapstoneProjectUdacity.git'
+        
       }
     }      
         
         
-        stage('Git') {
+        stage('npm config') {
             steps {
-                git credentialsId: 'wardahsana', url: 'https://github.com/wardahsana/CapstoneProjectUdacity.git'
+                sh 'npm config ls'
             }
         }
         
