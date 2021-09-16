@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-    tools {nodejs "nodejs"}
+    
 
     stages {  
         
@@ -13,11 +13,6 @@ pipeline {
     }      
         
         
-        stage('npm config') {
-            steps {
-                sh 'npm config ls'
-            }
-        }
         
 
         stage('Install dependencies') {
