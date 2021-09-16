@@ -1,12 +1,18 @@
 pipeline {
     agent any
-    stages {        
+
+    tools {nodejs "nodejs"}
+
+    stages {  
         
-        stage('Git') {
+        stage('build') {
             steps {
-                git credentialsId: 'wardahsana', url: 'https://github.com/wardahsana/CapstoneProjectUdacity.git'
-            }
-        }
+                sh 'npm config ls'
+      }
+    }      
+        
+        
+
         
 
         stage('Install dependencies') {
