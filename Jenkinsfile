@@ -42,7 +42,7 @@ pipeline {
         stage('Docker build image') {  
               steps {
                   echo 'Building docker container'
-                  sh 'docker build -t wardahsana/capproj .'
+                  sh 'docker build -t wardahsana/capsproj .'
                   }
               }
         
@@ -50,7 +50,7 @@ pipeline {
         stage('Push image') {
               steps {
                   echo "Pushing image to DockerHub"
-                  sh 'docker push wardahsana/capproj'
+                  sh 'docker push wardahsana/capsproj'
                   }
                 }
                     
