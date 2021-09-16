@@ -12,7 +12,7 @@ pipeline {
         stage('Install dependencies') {
               steps {
                   echo "Installing dependencies"
-                  sh 'sudo npm i -g npm@latest'
+                  sh 'npm i -g npm@latest'
                   
 
             }      
