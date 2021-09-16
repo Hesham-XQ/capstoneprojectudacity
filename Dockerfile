@@ -13,9 +13,8 @@ COPY package.json ./
 COPY package-lock.json ./
 
 ## Step 3: install all the dependencies we might have installed locally, in our image
-#RUN npm i -g npm@latest
-
-RUN npm install
+RUN npm install -g npm@latest
+#RUN npm install
 
 
 ## Step 4:
