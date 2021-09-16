@@ -9,11 +9,8 @@ pipeline {
             steps {
                 sh 'npm config ls'
       }
-    }      
-        
-        
-
-        
+    }       
+              
 
         stage('Install dependencies') {
               steps {
