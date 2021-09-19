@@ -3,7 +3,7 @@ pipeline {
 
     
 
-    stages {} 
+    stages {
 
         stage('clone') { 
             git branch: 'master',
@@ -81,4 +81,4 @@ pipeline {
           }
        }
 
-    
+}  
