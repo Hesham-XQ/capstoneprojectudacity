@@ -3,15 +3,14 @@ pipeline {
 
     
 
-    stages {
-
-        stage('clone') { 
-            git branch: 'master',
-                url: 'https://github.com/wardahsana/capstoneprojectudacity.git'
-}
-
+    stages {  
         
+        stage('Git') {
+            steps {
+                git credentialsId: 'wardahsana', url: 'https://github.com/wardahsana/capstoneprojectudacity.git'
         
+      }
+    }      
         
         
         
@@ -75,5 +74,5 @@ pipeline {
             }
           }
        }
-
-}  
+}
+    
