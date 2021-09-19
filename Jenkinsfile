@@ -20,7 +20,7 @@ pipeline {
                   echo "Installing dependencies"
                   sh 'curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -'
                   sh 'sudo npm install -g npm@latest'
-                  sh 'sudo npm install -g react-scripts
+                  sh 'sudo npm install -g react-scripts'
 '
                   
 
