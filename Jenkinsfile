@@ -10,11 +10,9 @@ pipeline {
                 git credentialsId: 'wardahsana', url: 'https://github.com/wardahsana/capstoneprojectudacity.git'
         
       }
-    }      
+    }           
+      
         
-        
-        
-
         stage('Install dependencies') {
               steps {
                   echo "Installing dependencies"
