@@ -44,7 +44,7 @@ pipeline {
         stage('Docker build image') {  
               steps {
                   echo 'Building docker container'
-                  sh 'docker build -t wardahsana/capsproj .'
+                  sh 'docker build -t wardahsana/capstone .'
                   }
               }
         
@@ -52,7 +52,7 @@ pipeline {
         stage('Push image') {
               steps {
                   echo "Pushing image to DockerHub"
-                  sh 'docker push wardahsana/capsproj'
+                  sh 'docker push wardahsana/capstone'
                   }
                 }
                     
@@ -67,7 +67,7 @@ pipeline {
         stage('Deploy container to AWS EKS cluster') {
           steps {
               withAWS(region: 'us-east-2', credentials: 'aws-access-id') 
-              sh 'kubectl set image deployment/capston-deployment capston-pod-reactapp=wardahsana/capproj:latest'
+              sh 'kubectl set image deployment/capston-deployment capston-pod-reactapp=wardahsana/capstone:latest'
 
           
             }

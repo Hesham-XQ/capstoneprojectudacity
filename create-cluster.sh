@@ -7,6 +7,6 @@ eksctl create cluster \
 --nodes-max 4 \
 --managed
 
-eksctl get cluster --name=capsproj
+eksctl get cluster --name=capstone
 
 
