@@ -36,10 +36,10 @@ pipeline {
         
         stage ('Run Eslint') {
   try {
-    echo "Linting App"  
-    sh 'npm run lint'
-    echo "Lint Check Passed"
-
+    sh '''#!/bin/bash
+    # Run Eslint
+    npm run lint
+    '''
   } catch (err) {
     currentBuild.result = 'FAILURE'
     error('Stopping build, Eslint failed')
