@@ -33,7 +33,15 @@ pipeline {
             }      
                 
         }
-        
+        stage ('Run Eslint') {
+          try {
+              sh 'npm run lint'
+            
+        } catch (err) {
+            currentBuild.result = 'FAILURE'
+            error('Stopping build, Eslint failed')
+  }
+}
         stage('Lint Application') {
               steps {
                   echo "Linting app"
