@@ -34,14 +34,17 @@ pipeline {
                 
         }
         
-        
-        stage('Lint Application') {
-              steps {
-                  echo "Linting app"
-                  sh 'npm run lint'
-            }
-        }    
+        stage ('Run Eslint') {
+  try {
+    echo "Linting App"  
+    sh 'npm run lint'
+    echo "Lint Check Passed"
 
+  } catch (err) {
+    currentBuild.result = 'FAILURE'
+    error('Stopping build, Eslint failed')
+  }
+}
         stage('Docker build image') {  
               steps {
                   echo 'Building docker container'
