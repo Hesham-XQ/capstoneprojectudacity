@@ -1,5 +1,3 @@
-
-
 eksctl create cluster \
 --name capsproj \
 --region us-east-2a \
@@ -10,3 +8,5 @@ eksctl create cluster \
 --managed
 
 eksctl get cluster --name=capsproj
+
+
