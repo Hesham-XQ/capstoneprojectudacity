@@ -45,24 +45,19 @@ pipeline {
         stage('Docker build image') {  
               steps {
                   echo 'Building docker container'
-                  script {
-                    dockerImage = docker.build("wardahsana/capstone", "-f Dockerfile .")
+                  sh 'docker build -t wardahsana/capstone .'
                   }
               }
-        }
+        
 
         stage('Push image') {
               steps {
                   echo "Pushing image to DockerHub"
-                  script {
-                        docker.withRegistry( '', 'dockerhub' ) {
-                         dockerImage.push()
-
-                  
+                  sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
+                  sh 'docker push wardahsana/capstone'
                   }
                 }
-              }
-        }
+                    
         stage('Create kube config file') {
             steps {
                 withAWS(region: 'us-east-2', credentials: 'aws-access-id') {
