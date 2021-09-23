@@ -1,14 +1,14 @@
 pipeline {
     agent any
-     environment {
+    environment {
         registry = "wardahsana/capstone"
         registryCredential = 'dockerhub'
-        }
+        } 
     
 
     stages {  
         
-        stage('Cloning Git') {
+        stage('CloningGit') {
             steps {
                 git credentialsId: 'wardahsana', url: 'https://github.com/wardahsana/capstoneprojectudacity.git'
         
