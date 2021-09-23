@@ -43,20 +43,22 @@ pipeline {
         }    
 
         stage('Docker build image') {  
-              steps {
-                  echo 'Building docker container'
-                  sh 'docker build -t wardahsana/capstone .'
-                  }
-              }
-        
-
-        stage('Push image') {
-              steps {
-                  echo "Pushing image to DockerHub"
-                  sh 'docker tag wardahsana/capstone wardahsana/capstone:latest'
-                  sh 'docker push wardahsana/capstone:latest'
-                  }
+            steps {
+                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]) {
+                    sh '''#!/bin/bash
+                        sudo docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+                        sudo docker build -t capstone:latest .
+                        sudo docker tag capstone:latest wardahsana/capstone:latest
+                        sudo docker push wardahsana/capstone:latest
+                        
+                    '''  
                 }
+            }
+        }
+              
+              
+              
+              
                     
         stage('Create kube config file') {
             steps {
