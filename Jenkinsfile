@@ -53,7 +53,13 @@ pipeline {
         stage('Push image') {
               steps {
                   echo "Pushing image to DockerHub"
-                  sh './upload_docker.sh'
+                  sh '''
+                  dockerpath=wardahsana/capstone
+                  echo "Docker ID and Image: $dockerpath"
+                  docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
+                  docker tag $dockerpath $dockerpath:latest
+                  docker push $dockerpath
+                  '''
                   }
                 }
                     
