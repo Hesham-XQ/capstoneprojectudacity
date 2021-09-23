@@ -62,7 +62,7 @@ pipeline {
                     
         stage('Create kube config file and Deploy container to AWS EKS cluster') {
             steps {
-                withAWS(region: 'us-east-2', credentials: 'aws-access-id') {
+                withAWS(region: 'us-east-2', credentials: 'aws_access_id') {
                     sh 'aws eks --region us-east-2 update-kubeconfig --name capstone'
                     sh "kubectl config use-context arn:aws:eks:us-east-2:610575826472:cluster/capstone"
                     sh "kubectl apply -f deployment.yml"
