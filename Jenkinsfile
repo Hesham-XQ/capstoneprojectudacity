@@ -53,7 +53,7 @@ pipeline {
         stage('Push image') {
               steps {
                   echo "Pushing image to DockerHub"
-                  sh 'docker push wardahsana/capstone'
+                  sh 'docker push wardahsana/capstone:capstone'
                   }
                 }
                     
