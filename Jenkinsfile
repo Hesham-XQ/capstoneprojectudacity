@@ -45,7 +45,7 @@ pipeline {
         stage('Docker build image') {  
               steps {
                   echo 'Building docker container'
-                  sh 'docker build -t capstone:mytag .'
+                  sh 'docker build -t wardahsana/capstone .'
                   }
               }
         
@@ -53,15 +53,15 @@ pipeline {
         stage('Push image') {
               steps {
                   echo "Pushing image to DockerHub"
-                  sh 'docker tag capstone:mytag wardahsana/capstone:mytag'
-                  sh 'docker push wardahsana/capstone:mytag'
+                  sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
+                  sh 'docker push wardahsana/capstone'
                   }
                 }
                     
         stage('Create kube config file') {
             steps {
                 withAWS(region: 'us-east-2', credentials: 'aws-access-id') {
-                    sh 'aws eks --region us-east-2 update-kubeconfig --name capsproj'
+                    sh 'aws eks --region us-east-2 update-kubeconfig --name capstone'
                     }
                 }       
             }
