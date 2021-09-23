@@ -45,7 +45,7 @@ pipeline {
         stage('Docker build image') {  
               steps {
                   echo 'Building docker container'
-                  sh 'docker build -t wardahsana/capstone .'
+                  sh 'docker build -t capstone:mytag .'
                   }
               }
         
@@ -53,8 +53,8 @@ pipeline {
         stage('Push image') {
               steps {
                   echo "Pushing image to DockerHub"
-                  sh 'docker tag capstone wardahsana/capstone'
-                  sh 'docker push wardahsana/capstone'
+                  sh 'docker tag capstone:mytag wardahsana/capstone:mytag'
+                  sh 'docker push wardahsana/capstone:mytag'
                   }
                 }
                     
