@@ -1,14 +1,11 @@
 pipeline {
     agent any
-    environment {
-        registry = "wardahsana/capstone"
-        registryCredential = 'dockerhub'
-        } 
+
     
 
     stages {  
         
-        stage('CloningGit') {
+        stage('Git') {
             steps {
                 git credentialsId: 'wardahsana', url: 'https://github.com/wardahsana/capstoneprojectudacity.git'
         
@@ -56,13 +53,7 @@ pipeline {
         stage('Push image') {
               steps {
                   echo "Pushing image to DockerHub"
-                  sh '''
-                  dockerpath=wardahsana/capstone
-                  echo "Docker ID and Image: $dockerpath"
-                  docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
-                  docker tag $dockerpath $dockerpath:latest
-                  docker push $dockerpath
-                  '''
+                  sh 'docker push wardahsana/capstone'
                   }
                 }
                     
