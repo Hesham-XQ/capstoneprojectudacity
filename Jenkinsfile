@@ -14,7 +14,7 @@ pipeline {
       
         
         stage('Install dependencies') {
-              steps {
+            steps {
                   echo "Installing dependencies"
                   
                   sh 'sudo npm install -g npm@latest'
@@ -27,7 +27,7 @@ pipeline {
                 
         }              
         stage('Build Application') {
-              steps {
+            steps {
                   echo "Building app"
                   sh 'npm run build'
             }      
@@ -35,10 +35,10 @@ pipeline {
         }
          
         
-        stage('Lint Application') {
-              steps {
-                  echo "Linting app"
-                  sh 'npm run lint'
+        stage('Run Lint') {
+            steps {
+                  echo "Linting Dockerfile"
+                  sh 'hadolint Dockerfile'
             }
         }    
 
