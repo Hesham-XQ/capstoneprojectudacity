@@ -27,6 +27,7 @@ spec:
       maxSurge: 1
       maxUnavailable: 1  
     type: RollingUpdate
+    
   template:
     metadata:
       labels:
@@ -43,4 +44,3 @@ spec:
             path: /
             port: 3000
    
-    
