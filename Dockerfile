@@ -2,7 +2,7 @@ FROM node:13.12.0-alpine
 
 ## Step 1:
 # Create working directory. (add the source code of our application to the image. This creates a directory called app in our image, and adds our source code to that directory.
-WORKDIR /newapp
+WORKDIR /webapp
 
 # Step 1a: add `/app/node_modules/.bin` to $PATH
 #ENV PATH /app/node_modules/.bin:$PATH
