@@ -47,9 +47,9 @@ pipeline {
                 withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]) {
                     sh '''#!/bin/bash
                         sudo docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-                        sudo docker build -t capstone:latest .
-                        sudo docker tag capstone:latest wardahsana/capstone:latest
-                        sudo docker push wardahsana/capstone:latest
+                        sudo docker build -t capstone .
+                        sudo docker tag capstone wardahsana/capstone
+                        sudo docker push wardahsana/capstone
                         
                     '''  
                 }
