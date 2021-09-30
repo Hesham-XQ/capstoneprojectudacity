@@ -65,12 +65,13 @@ pipeline {
                 withAWS(region: 'us-east-2', credentials: 'aws_access_id') {
                     sh 'aws eks --region us-east-2 update-kubeconfig --name capstone'
                     sh "kubectl config use-context arn:aws:eks:us-east-2:610575826472:cluster/capstone"
-                    sh "kubectl apply -f deployment.yml"
                     sh "kubectl set image deployment/capston-deployment capston-pod-reactapp=wardahsana/capstone:latest"
+                    sh "kubectl apply -f deployment.yml"
                     sh "kubectl get nodes"
                     sh "kubectl get deployment"
                     sh "kubectl get pod -o wide"
-                    sh "kubectl get service/capston-service"          
+                    sh "kubectl get service/capston-service"  
+                    sh "kubectl rollout status deployment/capston-deployment"        
                     
                     }
                 }       
