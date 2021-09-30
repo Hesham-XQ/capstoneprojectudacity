@@ -70,7 +70,6 @@ pipeline {
                     sh "kubectl get deployment"
                     sh "kubectl get pod -o wide"
                     sh "kubectl get service/capston-service"  
-                    sh "kubectl rollout status deployment/capston-deployment"        
                     
                     }
                 }       
