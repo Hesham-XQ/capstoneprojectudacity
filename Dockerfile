@@ -14,7 +14,6 @@ COPY package-lock.json ./
 
 ## Step 3: install all the dependencies we might have installed locally, in our image
 RUN npm install -g npm@latest
-RUN npm install react-scripts
 
 #RUN npm install
 
