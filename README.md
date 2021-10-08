@@ -24,3 +24,14 @@ Used Rolling Update strategy to deploy a React App to AWS EC2 and EKS.
 4. Used AWS Cloud Formation to create cluster in AWS EKS.
 5. Created Jenkinsfile and implemented CI/CD pipeline using Jenkins. Added jobs to Build, Lint, Push and Deploy containers to Kubernetes cluster.
 
+**Tools used to build the Project**
+
+- Jenkins
+- AWS
+- NodeJS
+- Nginx
+- NPM
+- Docker
+- Kubernetes
+- GitHub
+- Cloud Formation
